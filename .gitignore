@@ -1,0 +1,27 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+### Do not push screenshots ###
+*.png
+*.jpg
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+# Ignore test case files that are created by record pluging
+test-[0-9]*.spec.ts
+
+#Ignore vs folder
+.vs
+/.vs
+
+#Ignore temporal test class for developing new test cases or fixes
+temp.spec.js
