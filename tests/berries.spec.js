@@ -17,7 +17,40 @@ test.describe('GET /berry/', () => {
                     });
             });
 
-            //END GET /berry/ - Positive Cases
+            test('Verify response code is 200', async () => {
+                    await test.step(`[ASSERTION] Verify response status is code 200`, async () => {
+                            expect(response.status()).toBe(200);
+                    });
+            });
+
+            test('Check the Berry information is correct', async () => {
+                    await test.step(`[ASSERTION] Verify pokemon name is Pikachu`, async () => {
+                            expect(body.name).toBe('cheri');
+                    });
+
+                    await test.step(`[ASSERTION] Verify pokemon ID is 25`, async () => {
+                            expect(body.id).toBe(1);
+                    });
+            });
+
+            test('Check the Berry information includes all expected properties', async () => {
+                    await test.step(`Verify unexpected properties are not present`, async () => {
+                            expect(body).toHaveProperty('id');
+                            expect(body).toHaveProperty('name');
+                            expect(body).toHaveProperty('growth_time');
+                            expect(body).toHaveProperty('max_harvest');
+                            expect(body).toHaveProperty('natural_gift_power');
+                            expect(body).toHaveProperty('size');
+                            expect(body).toHaveProperty('smoothness');
+                            expect(body).toHaveProperty('soil_dryness');
+                            expect(body).toHaveProperty('firmness');
+                            expect(body).toHaveProperty('flavors');
+                            expect(body).toHaveProperty('item');
+                            expect(body).toHaveProperty('natural_gift_type');
+                    });
+            });
+
+            //END GET /berry/ by ID
         });
 
 
@@ -27,7 +60,7 @@ test.describe('GET /berry/', () => {
 
             test.beforeEach(async ({ request }) => {
                     await test.step(`Perform GET request to /pokemon/pikachu`, async () => {
-                            response = await request.get('https://pokeapi.co/api/v2/cheri/cheri');
+                            response = await request.get('https://pokeapi.co/api/v2/berry/cheri');
                     });
 
                     await test.step(`Transform the response into JSON`, async () => {
@@ -35,7 +68,40 @@ test.describe('GET /berry/', () => {
                     });
             });
 
-            //END GET /berry/ - Positive Cases
+            test('Verify response code is 200', async () => {
+                    await test.step(`[ASSERTION] Verify response status is code 200`, async () => {
+                            expect(response.status()).toBe(200);
+                    });
+            });
+
+            test('Check the Berry information is correct', async () => {
+                    await test.step(`[ASSERTION] Verify pokemon name is Pikachu`, async () => {
+                            expect(body.name).toBe('cheri');
+                    });
+
+                    await test.step(`[ASSERTION] Verify pokemon ID is 25`, async () => {
+                            expect(body.id).toBe(1);
+                    });
+            });
+
+            test('Check the Berry information includes all expected properties', async () => {
+                    await test.step(`Verify unexpected properties are not present`, async () => {
+                            expect(body).toHaveProperty('id');
+                            expect(body).toHaveProperty('name');
+                            expect(body).toHaveProperty('growth_time');
+                            expect(body).toHaveProperty('max_harvest');
+                            expect(body).toHaveProperty('natural_gift_power');
+                            expect(body).toHaveProperty('size');
+                            expect(body).toHaveProperty('smoothness');
+                            expect(body).toHaveProperty('soil_dryness');
+                            expect(body).toHaveProperty('firmness');
+                            expect(body).toHaveProperty('flavors');
+                            expect(body).toHaveProperty('item');
+                            expect(body).toHaveProperty('natural_gift_type');
+                    });
+            });
+
+            //END GET /berry/ by Name
         });
 
 
