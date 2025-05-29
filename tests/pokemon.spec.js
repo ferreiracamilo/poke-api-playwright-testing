@@ -41,23 +41,17 @@ test.describe('GET /pokemon/', () => {
                                         });
 
                                         await test.step(`Verify unexpected properties are not present`, async () => {
-                                                //If you query only one pokemon more information would be available, hence I will assert this information is not available
-                                                expect(pokemon).not.toHaveProperty('abilities');
-                                                expect(pokemon).not.toHaveProperty('cries');
-                                                expect(pokemon).not.toHaveProperty('forms');
-                                                expect(pokemon).not.toHaveProperty('game_indices');
-                                                expect(pokemon).not.toHaveProperty('height');
-                                                expect(pokemon).not.toHaveProperty('held_items');
-                                                expect(pokemon).not.toHaveProperty('is_default');
-                                                expect(pokemon).not.toHaveProperty('location_area_encounters');
-                                                expect(pokemon).not.toHaveProperty('moves');
-                                                expect(pokemon).not.toHaveProperty('order');
-                                                expect(pokemon).not.toHaveProperty('past_abilities');
-                                                expect(pokemon).not.toHaveProperty('past_types');
-                                                expect(pokemon).not.toHaveProperty('species');
-                                                expect(pokemon).not.toHaveProperty('sprites');
-                                                expect(pokemon).not.toHaveProperty('stats');
-                                                expect(pokemon).not.toHaveProperty('types');
+                                                const unexpectedProperties = [
+                                                        'abilities', 'cries', 'forms', 'game_indices',
+                                                        'height', 'held_items', 'is_default',
+                                                        'location_area_encounters', 'moves', 'order',
+                                                        'past_abilities', 'past_types', 'species',
+                                                        'sprites', 'stats', 'types'
+                                                ];
+
+                                                for (const prop of unexpectedProperties) {
+                                                        expect(pokemon).not.toHaveProperty(prop);
+                                                }
                                         });
                                 }
                         });
@@ -102,22 +96,18 @@ test.describe('GET /pokemon/', () => {
                         test('Check the Pokemon information includes all expected properties', async () => {
                                 //Do not use request because it is already done in beforeEach hook
                                 await test.step(`Verify unexpected properties are not present`, async () => {
-                                        expect(body).toHaveProperty('abilities');
-                                        expect(body).toHaveProperty('cries');
-                                        expect(body).toHaveProperty('forms');
-                                        expect(body).toHaveProperty('game_indices');
-                                        expect(body).toHaveProperty('height');
-                                        expect(body).toHaveProperty('held_items');
-                                        expect(body).toHaveProperty('is_default');
-                                        expect(body).toHaveProperty('location_area_encounters');
-                                        expect(body).toHaveProperty('moves');
-                                        expect(body).toHaveProperty('order');
-                                        expect(body).toHaveProperty('past_abilities');
-                                        expect(body).toHaveProperty('past_types');
-                                        expect(body).toHaveProperty('species');
-                                        expect(body).toHaveProperty('sprites');
-                                        expect(body).toHaveProperty('stats');
-                                        expect(body).toHaveProperty('types');
+
+                                        const unexpectedProperties = [
+                                                'abilities', 'cries', 'forms', 'game_indices',
+                                                'height', 'held_items', 'is_default',
+                                                'location_area_encounters', 'moves', 'order',
+                                                'past_abilities', 'past_types', 'species',
+                                                'sprites', 'stats', 'types'
+                                        ];
+
+                                        for (const prop of unexpectedProperties) {
+                                                expect(body).toHaveProperty(prop);
+                                        }
                                 });
                         });
                 });
