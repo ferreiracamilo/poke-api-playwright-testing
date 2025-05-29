@@ -8,7 +8,7 @@ test.describe('GET /berry/', () => {
             let body;
 
             test.beforeEach(async ({ request }) => {
-                    await test.step(`Perform GET request to /pokemon/pikachu`, async () => {
+                    await test.step(`Perform GET request to /berry/1`, async () => {
                             response = await request.get('https://pokeapi.co/api/v2/berry/1');
                     });
 
@@ -24,11 +24,11 @@ test.describe('GET /berry/', () => {
             });
 
             test('Check the Berry information is correct', async () => {
-                    await test.step(`[ASSERTION] Verify pokemon name is Pikachu`, async () => {
+                    await test.step(`[ASSERTION] Verify berry name is cheri`, async () => {
                             expect(body.name).toBe('cheri');
                     });
 
-                    await test.step(`[ASSERTION] Verify pokemon ID is 25`, async () => {
+                    await test.step(`[ASSERTION] Verify berry ID is 1`, async () => {
                             expect(body.id).toBe(1);
                     });
             });
@@ -59,7 +59,7 @@ test.describe('GET /berry/', () => {
             let body;
 
             test.beforeEach(async ({ request }) => {
-                    await test.step(`Perform GET request to /pokemon/pikachu`, async () => {
+                    await test.step(`Perform GET request to /berry/cheri`, async () => {
                             response = await request.get('https://pokeapi.co/api/v2/berry/cheri');
                     });
 
@@ -75,11 +75,11 @@ test.describe('GET /berry/', () => {
             });
 
             test('Check the Berry information is correct', async () => {
-                    await test.step(`[ASSERTION] Verify pokemon name is Pikachu`, async () => {
+                    await test.step(`[ASSERTION] Verify berry name is cheri`, async () => {
                             expect(body.name).toBe('cheri');
                     });
 
-                    await test.step(`[ASSERTION] Verify pokemon ID is 25`, async () => {
+                    await test.step(`[ASSERTION] Verify berry ID is 1`, async () => {
                             expect(body.id).toBe(1);
                     });
             });
@@ -106,9 +106,9 @@ test.describe('GET /berry/', () => {
 
 
         test.describe('GET LIST /berry/', () => {
-            test('Verify is possible to retrieve all pokemons', async ({ request }) => {
+            test('Verify is possible to retrieve all berries', async ({ request }) => {
                 let response;
-                await test.step(`Perform GET request to /pokemon/`, async () => {
+                await test.step(`Perform GET request to /berry/`, async () => {
                         response = await request.get('https://pokeapi.co/api/v2/berry');
                 });
 
@@ -122,7 +122,7 @@ test.describe('GET /berry/', () => {
                         expect(Array.isArray(body.results)).toBeTruthy();
                 });
 
-                await test.step(`Verify response contains more than one pokemon/resource`, async () => {
+                await test.step(`Verify response contains more than one berry/resource`, async () => {
                         expect(body.results.length).toBeGreaterThan(1);
                 });
 
@@ -144,7 +144,7 @@ test.describe('GET /berry/', () => {
         //END GET /berry/ - Positive Cases
     });
 
-    test.describe('GET /pokemon/ - Negative Cases', () => {
+    test.describe('GET /berry/ - Negative Cases', () => {
 
         const non_existing_ids = [-1,0,1.3];
         for (const id of non_existing_ids) {
@@ -163,7 +163,7 @@ test.describe('GET /berry/', () => {
                 expect(response.statusText()).toBe("Not Found");
             });
         }
-        //END GET /pokemon/ - Negative Cases
+        //END GET /berry/ - Negative Cases
     });
 
     //END GET /berry/
