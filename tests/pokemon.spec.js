@@ -32,11 +32,33 @@ test.describe('GET /pokemon/', () => {
                                 });
 
                                 for (const pokemon of body.results) {
-                                        expect(pokemon).toHaveProperty('name');
-                                        expect(typeof pokemon.name).toBe('string');
+                                        await test.step(`Verify expected properties are present`, async () => {
+                                                expect(pokemon).toHaveProperty('name');
+                                                expect(typeof pokemon.name).toBe('string');
 
-                                        expect(pokemon).toHaveProperty('url');
-                                        expect(typeof pokemon.url).toBe('string');
+                                                expect(pokemon).toHaveProperty('url');
+                                                expect(typeof pokemon.url).toBe('string');
+                                        });
+
+                                        await test.step(`Verify unexpected properties are not present`, async () => {
+                                                //If you query only one pokemon more information would be available, hence I will assert this information is not available
+                                                expect(pokemon).not.toHaveProperty('abilities');
+                                                expect(pokemon).not.toHaveProperty('cries');
+                                                expect(pokemon).not.toHaveProperty('forms');
+                                                expect(pokemon).not.toHaveProperty('game_indices');
+                                                expect(pokemon).not.toHaveProperty('height');
+                                                expect(pokemon).not.toHaveProperty('held_items');
+                                                expect(pokemon).not.toHaveProperty('is_default');
+                                                expect(pokemon).not.toHaveProperty('location_area_encounters');
+                                                expect(pokemon).not.toHaveProperty('moves');
+                                                expect(pokemon).not.toHaveProperty('order');
+                                                expect(pokemon).not.toHaveProperty('past_ablities');
+                                                expect(pokemon).not.toHaveProperty('past_types');
+                                                expect(pokemon).not.toHaveProperty('species');
+                                                expect(pokemon).not.toHaveProperty('sprites');
+                                                expect(pokemon).not.toHaveProperty('stats');
+                                                expect(pokemon).not.toHaveProperty('types');
+                                        });
                                 }
                         });
                 });
