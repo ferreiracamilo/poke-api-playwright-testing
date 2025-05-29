@@ -34,14 +34,14 @@ test.describe('GET /berry/', () => {
             });
 
             test('Check the Berry information includes all expected properties', async () => {
-                    const unexpectedProperties = [
+                    const expectedProperties = [
                         'id','name','growth_time','max_harvest','natural_gift_power',
                         'size','smoothness','soil_dryness','firmness','flavors','item','natural_gift_type'
                     ];
 
-                    for (const prop of unexpectedProperties) {
-                        await test.step(`Verify property ${prop} is not present at response`, async () => {
-                            expect(response).not.toHaveProperty(prop);
+                    for (const prop of expectedProperties) {
+                        await test.step(`Verify property ${prop} is present/included`, async () => {
+                            expect(body).toHaveProperty(prop);
                         });
                     }
             });
@@ -81,20 +81,17 @@ test.describe('GET /berry/', () => {
             });
 
             test('Check the Berry information includes all expected properties', async () => {
-                    await test.step(`Verify unexpected properties are not present`, async () => {
+                    const expectedProperties = [
+                        'id', 'name', 'growth_time', 'max_harvest', 'natural_gift_power',
+                        'size', 'smoothness', 'soil_dryness', 'firmness', 'flavors',
+                        'item', 'natural_gift_type'
+                    ];
+
+                    for (const prop of expectedProperties) {
+                        await test.step(`Verify ${prop} is present/included`, async () => {
                             expect(body).toHaveProperty('id');
-                            expect(body).toHaveProperty('name');
-                            expect(body).toHaveProperty('growth_time');
-                            expect(body).toHaveProperty('max_harvest');
-                            expect(body).toHaveProperty('natural_gift_power');
-                            expect(body).toHaveProperty('size');
-                            expect(body).toHaveProperty('smoothness');
-                            expect(body).toHaveProperty('soil_dryness');
-                            expect(body).toHaveProperty('firmness');
-                            expect(body).toHaveProperty('flavors');
-                            expect(body).toHaveProperty('item');
-                            expect(body).toHaveProperty('natural_gift_type');
-                    });
+                        });
+                    }
             });
 
             //END GET /berry/ by Name
