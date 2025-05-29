@@ -52,7 +52,7 @@ test.describe('GET /pokemon/', () => {
                                                 expect(pokemon).not.toHaveProperty('location_area_encounters');
                                                 expect(pokemon).not.toHaveProperty('moves');
                                                 expect(pokemon).not.toHaveProperty('order');
-                                                expect(pokemon).not.toHaveProperty('past_ablities');
+                                                expect(pokemon).not.toHaveProperty('past_abilities');
                                                 expect(pokemon).not.toHaveProperty('past_types');
                                                 expect(pokemon).not.toHaveProperty('species');
                                                 expect(pokemon).not.toHaveProperty('sprites');
@@ -96,6 +96,28 @@ test.describe('GET /pokemon/', () => {
 
                                 await test.step(`[ASSERTION] Verify pokemon type is Electric`, async () => {
                                         expect(body.types[0].type.name).toBe('electric');
+                                });
+                        });
+
+                        test('Check the Pokemon information includes all expected properties', async () => {
+                                //Do not use request because it is already done in beforeEach hook
+                                await test.step(`Verify unexpected properties are not present`, async () => {
+                                        expect(body).toHaveProperty('abilities');
+                                        expect(body).toHaveProperty('cries');
+                                        expect(body).toHaveProperty('forms');
+                                        expect(body).toHaveProperty('game_indices');
+                                        expect(body).toHaveProperty('height');
+                                        expect(body).toHaveProperty('held_items');
+                                        expect(body).toHaveProperty('is_default');
+                                        expect(body).toHaveProperty('location_area_encounters');
+                                        expect(body).toHaveProperty('moves');
+                                        expect(body).toHaveProperty('order');
+                                        expect(body).toHaveProperty('past_abilities');
+                                        expect(body).toHaveProperty('past_types');
+                                        expect(body).toHaveProperty('species');
+                                        expect(body).toHaveProperty('sprites');
+                                        expect(body).toHaveProperty('stats');
+                                        expect(body).toHaveProperty('types');
                                 });
                         });
                 });
