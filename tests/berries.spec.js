@@ -141,20 +141,20 @@ test.describe('GET /berry/', () => {
 
                 const non_existing_ids = [-1,0,1.3];
                 for (const id of non_existing_ids) {
-                test(`Verify status code for non existing berry by Id equal to ${id}`, async ({ request }) => {
-                        const response = await request.get(`/berry/${id}`);
-                        expect(response.status()).toBe(404);
-                        expect(response.statusText()).toBe("Not Found");
-                });
+                        test(`Verify status code for non existing berry by Id equal to ${id}`, async ({ request }) => {
+                                const response = await request.get(`/berry/${id}`);
+                                expect(response.status()).toBe(404);
+                                expect(response.statusText()).toBe("Not Found");
+                        });
                 }
 
                 const non_existing_names = ["@","Felipe","Agurumon"];
                 for (const name of non_existing_names) {
-                test(`Verify status code for non existing berry by Name equal to ${name}`, async ({ request }) => {
-                        const response = await request.get(`/berry/${name}`);
-                        expect(response.status()).toBe(404);
-                        expect(response.statusText()).toBe("Not Found");
-                });
+                        test(`Verify status code for non existing berry by Name equal to ${name}`, async ({ request }) => {
+                                const response = await request.get(`/berry/${name}`);
+                                expect(response.status()).toBe(404);
+                                expect(response.statusText()).toBe("Not Found");
+                        });
                 }
                 //END GET /berry/ - Negative Cases
         });
