@@ -72,4 +72,4 @@ A short demo walkthrough of the tests in action will be added here soon. Stay tu
 Want to try the same test scenarios in Postman?
 
 👉 Click here to open the Postman Collection
-(I'll update this with a real link once it's published.)
+[POKE-API Postman Practise Workspace](https://www.postman.com/cferreira89/test-pokeapi/overview)
