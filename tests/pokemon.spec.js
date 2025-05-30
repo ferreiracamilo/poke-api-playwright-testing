@@ -3,7 +3,7 @@ import { test, expect, request } from '@playwright/test';
 test.describe('GET /pokemon/', () => {
         test.describe('GET /pokemon/ - Negative Cases', () => {
                 test('Verify status code for non existing pokemon', async ({ request }) => {
-                        const response = await request.get('https://pokeapi.co/api/v2/pokemon/notapokemon');
+                        const response = await request.get('/pokemon/notapokemon');
                         expect(response.status()).toBe(404);
                         expect(response.statusText()).toBe("Not Found");
                 });
@@ -14,7 +14,7 @@ test.describe('GET /pokemon/', () => {
                         test('Verify is possible to retrieve all pokemons', async ({ request }) => {
                                 let response;
                                 await test.step(`Perform GET request to /pokemon/`, async () => {
-                                        response = await request.get('https://pokeapi.co/api/v2/pokemon');
+                                        response = await request.get('/pokemon');
                                 });
 
                                 await test.step(`Verify status code equals to 200`, async () => {
@@ -63,7 +63,7 @@ test.describe('GET /pokemon/', () => {
 
                         test.beforeEach(async ({ request }) => {
                                 await test.step(`Perform GET request to /pokemon/pikachu`, async () => {
-                                        response = await request.get('https://pokeapi.co/api/v2/pokemon/pikachu');
+                                        response = await request.get('/pokemon/pikachu');
                                 });
 
                                 await test.step(`Transform the response into JSON`, async () => {
