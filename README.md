@@ -5,6 +5,8 @@ Automated API testing for PokéAPI using Playwright and JavaScript.
 
 It simulates real-world scenarios while keeping the code clean, modular, and maintainable.
 
+![fa95a60a-5017-47cf-8027-cf4e4e76ef00](https://github.com/user-attachments/assets/d7d40a79-be35-47fd-b155-5b149f58428c)
+
 ## 📦 Features
 - ✅ API testing with Playwright Test and APIRequestContext
 
