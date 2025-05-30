@@ -9,7 +9,7 @@ test.describe('GET /berry/', () => {
 
                 test.beforeEach(async ({ request }) => {
                         await test.step(`Perform GET request to /berry/1`, async () => {
-                                response = await request.get('https://pokeapi.co/api/v2/berry/1');
+                                response = await request.get(`${process.env.BASE_URL}/berry/1`);
                         });
 
                         await test.step(`Transform the response into JSON`, async () => {
@@ -56,7 +56,7 @@ test.describe('GET /berry/', () => {
 
                 test.beforeEach(async ({ request }) => {
                         await test.step(`Perform GET request to /berry/cheri`, async () => {
-                                response = await request.get('https://pokeapi.co/api/v2/berry/cheri');
+                                response = await request.get(`${process.env.BASE_URL}/berry/cheri`);
                         });
 
                         await test.step(`Transform the response into JSON`, async () => {
@@ -99,36 +99,36 @@ test.describe('GET /berry/', () => {
 
 
                 test.describe('GET LIST /berry/', () => {
-                test('Verify is possible to retrieve all berries', async ({ request }) => {
-                        let response;
-                        await test.step(`Perform GET request to /berry/`, async () => {
-                                response = await request.get('https://pokeapi.co/api/v2/berry');
-                        });
-
-                        await test.step(`Verify status code equals to 200`, async () => {
-                                expect(response.status()).toBe(200);
-                        });
-
-                        const body = await response.json();
-
-                        await test.step(`Verify response contains an array`, async () => {
-                                expect(Array.isArray(body.results)).toBeTruthy();
-                        });
-
-                        await test.step(`Verify response contains more than one berry/resource`, async () => {
-                                expect(body.results.length).toBeGreaterThan(1);
-                        });
-
-                        for (const berry of body.results) {
-                                await test.step(`Verify expected properties are present`, async () => {
-                                        expect(berry).toHaveProperty('name');
-                                        expect(typeof berry.name).toBe('string');
-
-                                        expect(berry).toHaveProperty('url');
-                                        expect(typeof berry.url).toBe('string');
+                        test('Verify is possible to retrieve all berries', async ({ request }) => {
+                                let response;
+                                await test.step(`Perform GET request to /berry/`, async () => {
+                                        response = await request.get(`${process.env.BASE_URL}/berry`);
                                 });
-                        }
-                });
+
+                                await test.step(`Verify status code equals to 200`, async () => {
+                                        expect(response.status()).toBe(200);
+                                });
+
+                                const body = await response.json();
+
+                                await test.step(`Verify response contains an array`, async () => {
+                                        expect(Array.isArray(body.results)).toBeTruthy();
+                                });
+
+                                await test.step(`Verify response contains more than one berry/resource`, async () => {
+                                        expect(body.results.length).toBeGreaterThan(1);
+                                });
+
+                                for (const berry of body.results) {
+                                        await test.step(`Verify expected properties are present`, async () => {
+                                                expect(berry).toHaveProperty('name');
+                                                expect(typeof berry.name).toBe('string');
+
+                                                expect(berry).toHaveProperty('url');
+                                                expect(typeof berry.url).toBe('string');
+                                        });
+                                }
+                        });
 
                 //END GET LIST /berry/
                 });
@@ -142,7 +142,7 @@ test.describe('GET /berry/', () => {
                 const non_existing_ids = [-1,0,1.3];
                 for (const id of non_existing_ids) {
                 test(`Verify status code for non existing berry by Id equal to ${id}`, async ({ request }) => {
-                        const response = await request.get(`https://pokeapi.co/api/v2/berry/${id}`);
+                        const response = await request.get(`/berry/${id}`);
                         expect(response.status()).toBe(404);
                         expect(response.statusText()).toBe("Not Found");
                 });
@@ -151,7 +151,7 @@ test.describe('GET /berry/', () => {
                 const non_existing_names = ["@","Felipe","Agurumon"];
                 for (const name of non_existing_names) {
                 test(`Verify status code for non existing berry by Name equal to ${name}`, async ({ request }) => {
-                        const response = await request.get(`https://pokeapi.co/api/v2/berry/${name}`);
+                        const response = await request.get(`/berry/${name}`);
                         expect(response.status()).toBe(404);
                         expect(response.statusText()).toBe("Not Found");
                 });
