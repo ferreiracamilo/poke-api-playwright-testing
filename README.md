@@ -66,7 +66,7 @@ poke-api-playwright-testing/
 ## 🎥 Demo Video
 A short demo walkthrough of the tests in action will be added here soon. Stay tuned!
 
-👉 [Demo Video showing case Postman and Javascript/Playwright implementation](https://youtu.be/axcK3ryrxAg)
+👉 [DEMO VIDEO](https://youtu.be/axcK3ryrxAg)
 
 ## 🔁 Run it in Postman
 Want to try the same test scenarios in Postman?
