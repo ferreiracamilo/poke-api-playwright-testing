@@ -64,7 +64,7 @@ poke-api-playwright-testing/
 └── README.md
 
 ## 🎥 Demo Video
-A short demo walkthrough of the tests in action will be added here soon. Stay tuned!
+A short demo walkthrough of the tests in action.
 
 👉 [DEMO VIDEO](https://youtu.be/axcK3ryrxAg)
 
