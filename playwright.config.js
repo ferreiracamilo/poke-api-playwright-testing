@@ -3,7 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 const dotenv = require('dotenv');
 
 // Pick file .env based on variable passed in terminal
-const envFile = process.env.ENV_FILE || '.env.dev';
+const envFile = process.env.ENV_FILE || '.env.prod';
 dotenv.config({ path: envFile });
 
 /**
