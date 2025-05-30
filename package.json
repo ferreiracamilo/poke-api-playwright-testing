@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Perform API Automation Testing with poke-api",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:dev": "cross-env ENV_FILE=.env.dev npx playwright test",
+    "test:qa": "cross-env ENV_FILE=.env.qa npx playwright test",
+    "test:prod": "cross-env ENV_FILE=.env.prod npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
