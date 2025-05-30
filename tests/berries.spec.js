@@ -99,36 +99,36 @@ test.describe('GET /berry/', () => {
 
 
                 test.describe('GET LIST /berry/', () => {
-                test('Verify is possible to retrieve all berries', async ({ request }) => {
-                        let response;
-                        await test.step(`Perform GET request to /berry/`, async () => {
-                                response = await request.get('/berry');
-                        });
-
-                        await test.step(`Verify status code equals to 200`, async () => {
-                                expect(response.status()).toBe(200);
-                        });
-
-                        const body = await response.json();
-
-                        await test.step(`Verify response contains an array`, async () => {
-                                expect(Array.isArray(body.results)).toBeTruthy();
-                        });
-
-                        await test.step(`Verify response contains more than one berry/resource`, async () => {
-                                expect(body.results.length).toBeGreaterThan(1);
-                        });
-
-                        for (const berry of body.results) {
-                                await test.step(`Verify expected properties are present`, async () => {
-                                        expect(berry).toHaveProperty('name');
-                                        expect(typeof berry.name).toBe('string');
-
-                                        expect(berry).toHaveProperty('url');
-                                        expect(typeof berry.url).toBe('string');
+                        test('Verify is possible to retrieve all berries', async ({ request }) => {
+                                let response;
+                                await test.step(`Perform GET request to /berry/`, async () => {
+                                        response = await request.get(`${process.env.BASE_URL}/berry`);
                                 });
-                        }
-                });
+
+                                await test.step(`Verify status code equals to 200`, async () => {
+                                        expect(response.status()).toBe(200);
+                                });
+
+                                const body = await response.json();
+
+                                await test.step(`Verify response contains an array`, async () => {
+                                        expect(Array.isArray(body.results)).toBeTruthy();
+                                });
+
+                                await test.step(`Verify response contains more than one berry/resource`, async () => {
+                                        expect(body.results.length).toBeGreaterThan(1);
+                                });
+
+                                for (const berry of body.results) {
+                                        await test.step(`Verify expected properties are present`, async () => {
+                                                expect(berry).toHaveProperty('name');
+                                                expect(typeof berry.name).toBe('string');
+
+                                                expect(berry).toHaveProperty('url');
+                                                expect(typeof berry.url).toBe('string');
+                                        });
+                                }
+                        });
 
                 //END GET LIST /berry/
                 });

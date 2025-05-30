@@ -14,7 +14,7 @@ test.describe('GET /pokemon/', () => {
                         test('Verify is possible to retrieve all pokemons', async ({ request }) => {
                                 let response;
                                 await test.step(`Perform GET request to /pokemon/`, async () => {
-                                        response = await request.get('/pokemon');
+                                        response = await request.get(`${process.env.BASE_URL}/pokemon`);
                                 });
 
                                 await test.step(`Verify status code equals to 200`, async () => {
@@ -63,7 +63,7 @@ test.describe('GET /pokemon/', () => {
 
                         test.beforeEach(async ({ request }) => {
                                 await test.step(`Perform GET request to /pokemon/pikachu`, async () => {
-                                        response = await request.get('/pokemon/pikachu');
+                                        response = await request.get(`${process.env.BASE_URL}/pokemon/pikachu`);
                                 });
 
                                 await test.step(`Transform the response into JSON`, async () => {
