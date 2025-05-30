@@ -97,7 +97,7 @@ test.describe('GET /pokemon/', () => {
                                 //Do not use request because it is already done in beforeEach hook
                                 await test.step(`Verify unexpected properties are not present`, async () => {
 
-                                        const unexpectedProperties = [
+                                        const expectedProperties = [
                                                 'abilities', 'cries', 'forms', 'game_indices',
                                                 'height', 'held_items', 'is_default',
                                                 'location_area_encounters', 'moves', 'order',
@@ -105,7 +105,7 @@ test.describe('GET /pokemon/', () => {
                                                 'sprites', 'stats', 'types'
                                         ];
 
-                                        for (const prop of unexpectedProperties) {
+                                        for (const prop of expectedProperties) {
                                                 expect(body).toHaveProperty(prop);
                                         }
                                 });
