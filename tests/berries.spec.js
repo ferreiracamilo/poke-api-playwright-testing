@@ -9,7 +9,7 @@ test.describe('GET /berry/', () => {
 
                 test.beforeEach(async ({ request }) => {
                         await test.step(`Perform GET request to /berry/1`, async () => {
-                                response = await request.get('/berry/1');
+                                response = await request.get(`${process.env.BASE_URL}/berry/1`);
                         });
 
                         await test.step(`Transform the response into JSON`, async () => {
@@ -56,7 +56,7 @@ test.describe('GET /berry/', () => {
 
                 test.beforeEach(async ({ request }) => {
                         await test.step(`Perform GET request to /berry/cheri`, async () => {
-                                response = await request.get('/berry/cheri');
+                                response = await request.get(`${process.env.BASE_URL}/berry/cheri`);
                         });
 
                         await test.step(`Transform the response into JSON`, async () => {
